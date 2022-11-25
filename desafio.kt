@@ -1,21 +1,31 @@
 // [Template no Kotlin Playground](https://pl.kotl.in/WcteahpyN)
 
-enum class Nivel { BASIC, INTERMEDIARY, HARD }
+enum class Level { BASIC, INTERMEDIARY, HARD }
 
-class User(val id : Int, val name : String)
+class User(val name : String)
 
-data class ContentEducation(var name: String, val duration: Int = 60)
+data class ContentEducation(val name: String, val duration: Int = 60, val level : Level)
 
-data class Formation(val name: String, var contents: List<ContentEducation>) {
-
-    val subscribed = mutableListOf<User>()
-    
-    fun registration(user: User) {
-        TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
-    }
-}
+data class Formation(val name: User, var contents: ContentEducation)
 
 fun main() {
-    TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
-    TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
+    
+    val user1 = User("Samuel Silva")
+    val user2 = User("FalvoJr")
+    val user3 = User("DIO")
+    
+    val formationKotlin = ContentEducation("Kotlin Experience", 40, Level.BASIC)
+    val formationAndroid = ContentEducation("Android Formation", 60, Level.INTERMEDIARY)
+    val bootCamp = ContentEducation("BootCamp DIO", 120, Level.HARD)
+    
+    val formation = Formation(user1, formationKotlin)
+    
+    val formation1 = Formation(user2, formationAndroid)
+    
+    val formation2 = Formation(user3, bootCamp)
+
+    println("-------CURSERS & USERS---------")
+    println("$formation")
+    println("$formation1")
+    println("$formation2")   
 }
